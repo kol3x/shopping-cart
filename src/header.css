@@ -11,20 +11,23 @@
 }
 
 .header-1 > h1 {
+  margin-left: 20px;
+  font-size: 4em;  
   grid-column: 1;
   align-self: center;
   justify-self: center;
 }
 
 .header-3 {
-  padding: 15px;
+  padding: 10px;
   place-self: center;
 }
 
 .circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  border-radius: 35%;
+  border: 1px solid #1d3759;
   background-color: #d9d9d9;
   position: relative;
 }
@@ -45,6 +48,12 @@
   right: 0;
 }
 
+.circle > h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 .button > button {
   font-size: 2.5em;
   position: absolute;
@@ -62,4 +71,10 @@
 .button > button:hover {
   background-color: white;
   cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
 }

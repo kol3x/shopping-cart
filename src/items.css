@@ -11,9 +11,10 @@
 
 .items {
   grid-row: 2;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
-  grid-template-columns: 300px 300px 300px 300px;
 }
 
 .out-img {
@@ -30,6 +31,7 @@
 
 
 .item {
+  max-width: 300px;
   background-color: white;
   border: 3px solid #f2c9e0;
   padding: 20px;

@@ -1,14 +1,27 @@
-import Header from './header'
-import Items from './items'
+import Header from "./header";
+import Items from "./items";
+import Cart from "./cart";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Header/>,
+    children: [
+      {
+        path: "",
+        element: <Items />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+    ],
+  },
+]);
 
 function App() {
-
-  return (
-    <>
-      <Header />
-      <Items />
-    </>
-  )
+  return <RouterProvider router={router}/>;
 }
 
-export default App
+export default App;
