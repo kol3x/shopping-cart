@@ -12,10 +12,10 @@ function Items() {
   function handleAddition(e, item) {
     e.preventDefault();
     let quantity = Number(e.target.elements[0].value);
-    if (!quantity) quantity = 1;
+    if (quantity === 0) quantity = 1;
     setCount((initial) => initial + quantity);
     setCartItems((prevCart) => [...prevCart, { item, quantity }]);
-    e.target.elements[0].value = "1";
+    e.target.elements[0].value = "";
   }
 
   return (
