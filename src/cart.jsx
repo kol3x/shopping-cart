@@ -28,7 +28,7 @@ function Cart() {
             <div>{item.item.title}</div>
             <div>
               {item.item.price}$ x {item.quantity} <br></br>
-              <button onClick={() => removeFromCart(item.item)}>Remove</button>
+              <button className="removeBtn" onClick={() => removeFromCart(item.item)}>Remove</button>
             </div>
             <div>Total: {item.item.price * item.quantity}$</div>
           </div>

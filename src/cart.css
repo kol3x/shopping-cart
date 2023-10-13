@@ -66,3 +66,25 @@
   background-color: #916f8f;
   transform: translateY(4px);
 }
+
+.removeBtn {
+  display: inline-block;
+  padding: 6px 10px;
+  color: #333;
+  background-color: #f2c9e0;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.5s;
+  cursor: pointer;
+  outline: none;
+}
+.removeBtn:hover {
+  background-color: #c19dbd;
+}
+.removeBtn:active {
+  background-color: #916f8f;
+  transform: translateY(4px);
+}
