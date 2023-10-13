@@ -106,4 +106,7 @@ a {
   .circle > h2 {
     display: none;
   }
+  .header-1 > h1 {
+    font-size: 3em;
+  }
 }

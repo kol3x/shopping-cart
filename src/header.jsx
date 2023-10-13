@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./header.css";
 import { Link, Outlet } from "react-router-dom";
@@ -16,7 +15,11 @@ function Header() {
     }
   };
 
-  const linkElement = isCartOpen ? <Link to="/">🛒</Link> : <Link to="/cart">🛒</Link>;
+  const linkElement = isCartOpen ? (
+    <Link to="/">🛒</Link>
+  ) : (
+    <Link to="/cart">🛒</Link>
+  );
 
   return (
     <>
@@ -27,13 +30,11 @@ function Header() {
         <div className="header-3">
           <div className="circle">
             <div className="button left">
-              <button>
-                <Link to="/">🛍️</Link>
-              </button>
+              <button onClick={handleCartClick}>{linkElement}</button>
             </div>
             <div className="button right">
-              <button onClick={handleCartClick}>
-                {linkElement}
+              <button>
+                <Link to="/">🛍️</Link>
               </button>
             </div>
             <h2>Items added: {count}</h2>
@@ -41,7 +42,7 @@ function Header() {
         </div>
         <div className="header-5"></div>
       </div>
-      <Outlet context={{setCount, setCartItems, cartItems}} />
+      <Outlet context={{ setCount, setCartItems, cartItems }} />
     </>
   );
 }
