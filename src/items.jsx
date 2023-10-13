@@ -14,7 +14,18 @@ function Items() {
     let quantity = Number(e.target.elements[0].value);
     if (quantity === 0) quantity = 1;
     setCount((initial) => initial + quantity);
-    setCartItems((prevCart) => [...prevCart, { item, quantity }]);
+    setCartItems((prevCart) => {
+      const hasItem = prevCart.find((cartItem) => cartItem.item.id === item.id);
+      if (hasItem) {
+        return prevCart.map((cartItem) =>
+          cartItem.item.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + quantity }
+            : cartItem
+        );
+      } else {
+        return [...prevCart, { item, quantity }];
+      }
+    });
     e.target.elements[0].value = "";
   }
 
