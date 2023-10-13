@@ -1,3 +1,4 @@
+
 import Header from "./header";
 import Items from "./items";
 import Cart from "./cart";
@@ -14,7 +15,12 @@ const router = createBrowserRouter([
       },
       {
         path: "cart",
-        element: <Cart />,
+        element: (
+          <>
+            <Items />
+            <Cart />
+          </>
+        ),
       },
     ],
   },

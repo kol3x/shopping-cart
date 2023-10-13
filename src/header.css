@@ -12,7 +12,7 @@
 
 .header-1 > h1 {
   margin-left: 20px;
-  font-size: 4em;  
+  font-size: 4em;
   grid-column: 1;
   align-self: center;
   justify-self: center;
@@ -50,8 +50,15 @@
 
 .circle > h2 {
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
+  font-size: 1em;
+  color: #1d3759;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
 .button > button {
@@ -66,6 +73,7 @@
   border-radius: 50%;
   border: none;
   background-color: #d9d9d9;
+  transition: background-color 0.5s ease;
 }
 
 .button > button:hover {

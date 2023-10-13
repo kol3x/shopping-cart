@@ -1,17 +1,23 @@
 import useFetch from "react-fetch-hook";
 import "./items.css";
 import { useOutletContext } from "react-router-dom";
+import { useState } from "react";
 
 function Items() {
   const { data, error } = useFetch(
     "https://fakestoreapi.com/products/category/jewelery"
   );
 
-  const setCount = useOutletContext();
 
-  function handleAddition(e) {
+  const {setCount, setCartItems} = useOutletContext();
+
+
+  function handleAddition(e, item) {
     e.preventDefault();
-    setCount((initial) => initial + Number(e.target.elements[0].value));
+    const quantity = Number(e.target.elements[0].value);
+    setCount((initial) => initial + quantity);
+    setCartItems(prevCart => [...prevCart, {item, quantity}]);
+    e.target.elements[0].value = "";
   }
 
   return (
@@ -22,15 +28,15 @@ function Items() {
       )}
       <div className="items">
         {data &&
-          data.map(({ id, title, image, price }) => (
-            <div className="item" key={id}>
+          data.map((item) => (
+            <div className="item" key={item.id}>
               <div className="out-img">
-                <img src={image}></img>
+                <img src={item.image}></img>
               </div>
-              <h4>{title}</h4>
+              <h4>{item.title}</h4>
 
-              <form onSubmit={handleAddition} className="bottom-item">
-                <p>{price}$</p>
+              <form onSubmit={(event) => handleAddition(event, item)} className="bottom-item">
+                <p>{item.price}$</p>
                 <input type="number" min="0"></input>
                 <button type="submit" className="add-button">
                   Add to cart

@@ -1,10 +1,22 @@
+
 import { useState } from "react";
 import "./header.css";
 import { Link, Outlet } from "react-router-dom";
-import { useNavigate, useLocation } from "react-router-dom";
 
 function Header() {
   const [count, setCount] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleCartClick = () => {
+    if (isCartOpen) {
+      setIsCartOpen(false);
+    } else {
+      setIsCartOpen(true);
+    }
+  };
+
+  const linkElement = isCartOpen ? <Link to="/">🛒</Link> : <Link to="/cart">🛒</Link>;
 
   return (
     <>
@@ -20,17 +32,16 @@ function Header() {
               </button>
             </div>
             <div className="button right">
-              <button>
-                <Link to="cart">🛒</Link>
+              <button onClick={handleCartClick}>
+                {linkElement}
               </button>
-              
             </div>
-            <h2>{count}</h2>
+            <h2>Items added: {count}</h2>
           </div>
         </div>
         <div className="header-5"></div>
       </div>
-      <Outlet context={setCount} />
+      <Outlet context={{setCount, setCartItems, cartItems}} />
     </>
   );
 }
