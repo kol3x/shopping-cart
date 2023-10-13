@@ -1,23 +1,21 @@
 import useFetch from "react-fetch-hook";
 import "./items.css";
 import { useOutletContext } from "react-router-dom";
-import { useState } from "react";
 
 function Items() {
   const { data, error } = useFetch(
     "https://fakestoreapi.com/products/category/jewelery"
   );
 
-
-  const {setCount, setCartItems} = useOutletContext();
-
+  const { setCount, setCartItems } = useOutletContext();
 
   function handleAddition(e, item) {
     e.preventDefault();
-    const quantity = Number(e.target.elements[0].value);
+    let quantity = Number(e.target.elements[0].value);
+    if (!quantity) quantity = 1;
     setCount((initial) => initial + quantity);
-    setCartItems(prevCart => [...prevCart, {item, quantity}]);
-    e.target.elements[0].value = "";
+    setCartItems((prevCart) => [...prevCart, { item, quantity }]);
+    e.target.elements[0].value = "1";
   }
 
   return (
@@ -35,7 +33,10 @@ function Items() {
               </div>
               <h4>{item.title}</h4>
 
-              <form onSubmit={(event) => handleAddition(event, item)} className="bottom-item">
+              <form
+                onSubmit={(event) => handleAddition(event, item)}
+                className="bottom-item"
+              >
                 <p>{item.price}$</p>
                 <input type="number" min="0"></input>
                 <button type="submit" className="add-button">
